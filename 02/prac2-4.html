@@ -10,19 +10,33 @@
 
     <script>
         function runButtonPressed() {
-            //prac2-1 10個の順数（１，２，３．．．の数列）を生成し，２番目と４番目を入れ替える
-            //prac2-2 10個の順数を生成し，n番目とm番目を入れ替える
-            //(nとmは乱数にて決定する)
-            //prac2-3 prac2-2を20回繰り返す（シャッフルプログラムの完成）
-
             //prac2-4 10個の乱数を生成し，もう一つの配列を作成し，コピーするプログラム．
+            var numbers = [];
+            pushRandomNumTenTimes(numbers);
+            copyNumbers = copyArray(numbers);
+            show(numbers);
+            show(copyNumbers);
+        }
+
+        function copyArray(array) {
+            var copy = [];
+            for (var i = 0; i < array.length; i++) {
+                copy.push(array[i]);
+            }
+            return copy;
+        }
+
+        function pushRandomNumTenTimes(array) {
+            for (var i = 0; i < 10; i++) {
+                array.push(Math.floor(Math.random() * 100));
+            }
         }
     </script>
 
 </head>
 
 <body>
-    <h1>prac2</h1>
+    <h1>prac2-4</h1>
     <button onclick="runButtonPressed()">run!</button>
     <p id="res"></p>
 </body>
