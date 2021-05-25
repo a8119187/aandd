@@ -10,17 +10,31 @@
 
     <script>
         function runButtonPressed() {
-            //prac3-1 10個の乱数の合計を求める（繰り返しで）
             //prac3-2 10個の乱数の平均を求める
-            //prac3-3 10個の乱数の最大値を求める
-            //prac3-4 10個の乱数の最小値を求める
+            var numbers = [];
+            pushRandomNumTenTimes(numbers);
+            show(numbers);
+            console.log(avgArray(numbers));
+        }
+        function avgArray(array) {
+            var total = 0;
+            for (var i = 0; i < array.length; i++) {
+                total += array[i];
+            }
+            result = total / array.length
+            return result;
+        }
+        function pushRandomNumTenTimes(array) {
+            for (var i = 0; i < 10; i++) {
+                array.push(Math.floor(Math.random() * 100));
+            }
         }
     </script>
 
 </head>
 
 <body>
-    <h1>prac3</h1>
+    <h1>prac3-2</h1>
     <button onclick="runButtonPressed()">run!</button>
     <p id="res"></p>
 </body>
