@@ -10,3 +10,13 @@ function show(array) {
     //document.getElementById('res').innerHTML = html;
     document.getElementById('res').insertAdjacentHTML('beforeend', html);
 }
+/**
+ * 1からNまでの数を順にN個挿入する関数
+ * @param {array} array
+ * @param {int} n
+ */
+function createSequentialNumbers(array, n) {
+    for (var i = 1; i < n + 1; i++) {
+        array.push(i);
+    }
+}
