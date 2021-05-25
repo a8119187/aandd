@@ -12,7 +12,7 @@
         function runButtonPressed() {
             //prac3-2 10個の乱数の平均を求める
             var numbers = [];
-            pushRandomNumTenTimes(numbers);
+            createRandomNumbers(numbers, 10);
             show(numbers);
             console.log(avgArray(numbers));
         }
@@ -23,11 +23,6 @@
             }
             result = total / array.length
             return result;
-        }
-        function pushRandomNumTenTimes(array) {
-            for (var i = 0; i < 10; i++) {
-                array.push(Math.floor(Math.random() * 100));
-            }
         }
     </script>
 

@@ -12,7 +12,7 @@
         function runButtonPressed() {
             //prac3-1 10個の乱数の合計を求める（繰り返しで）
             var numbers = [];
-            pushRandomNumTenTimes(numbers);
+            createRandomNumbers(numbers, 10);
             show(numbers);
             console.log(sumArray(numbers));
         }
@@ -22,11 +22,6 @@
                 result += array[i];
             }
             return result;
-        }
-        function pushRandomNumTenTimes(array) {
-            for (var i = 0; i < 10; i++) {
-                array.push(Math.floor(Math.random() * 100));
-            }
         }
     </script>
 

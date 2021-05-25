@@ -12,7 +12,7 @@
         function runButtonPressed() {
             //prac3-3 10個の乱数の最大値を求める
             var numbers = [];
-            pushRandomNumTenTimes(numbers);
+            createRandomNumbers(numbers, 10);
             show(numbers);
             console.log(maxArray(numbers));
         }
@@ -25,12 +25,6 @@
                 }
             }
             return tmp;
-        }
-
-        function pushRandomNumTenTimes(array) {
-            for (var i = 0; i < 10; i++) {
-                array.push(Math.floor(Math.random() * 100));
-            }
         }
     </script>
 
