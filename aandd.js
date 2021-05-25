@@ -12,11 +12,22 @@ function show(array) {
 }
 /**
  * 1からNまでの数を順にN個挿入する関数
- * @param {array} array
- * @param {int} n
+ * @param {Array} array
+ * @param {Number} n
  */
 function createSequentialNumbers(array, n) {
     for (var i = 1; i < n + 1; i++) {
         array.push(i);
+    }
+}
+
+/**
+ * N個の乱数を挿入する関数
+ * @param {Array} array
+ * @param {Number} n
+ */
+function createRandomNumbers(array, n) {
+    for (var i = 1; i < n + 1; i++) {
+        array.push(Math.floor(Math.random() * 100));
     }
 }
