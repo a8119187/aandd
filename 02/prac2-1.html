@@ -11,11 +11,16 @@
     <script>
         function runButtonPressed() {
             //prac2-1 10個の順数（１，２，３．．．の数列）を生成し，２番目と４番目を入れ替える
-            //prac2-2 10個の順数を生成し，n番目とm番目を入れ替える
-            //(nとmは乱数にて決定する)
-            //prac2-3 prac2-2を20回繰り返す（シャッフルプログラムの完成）
-
-            //prac2-4 10個の乱数を生成し，もう一つの配列を作成し，コピーするプログラム．
+            var numbers = [];
+            createSequentialNumbers(numbers, 10);
+            switch1with3(numbers);
+            show(numbers);
+        }
+        function switch1with3(array) {
+            var array1 = array[1];
+            var array2 = array[3];
+            array[1] = array2;
+            array[3] = array1;
         }
     </script>
 
