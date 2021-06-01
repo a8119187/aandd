@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        function runButtonPressed() {
+            //prac4-2 3以上のを抽出した配列
+            var numbers = [];
+            createRandomNumbers(numbers, 10);
+            var numbers3 = new3MoreArray(numbers);
+            show(numbers);
+            show(numbers3);
+        }
+        function new3MoreArray(array) {
+            var more3 = [];
+            for (var i = 0; i < array.length; i++) {
+                if (array[i] > 3) {
+                    more3.push(array[i]);
+                }
+            }
+            return more3;
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>prac4-2</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="res"></p>
+</body>
+
+</html>
