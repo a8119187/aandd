@@ -10,6 +10,7 @@
 
     <script>
         function runButtonPressed() {
+            console.clear();
             var numbers = [];
             createOrderedRandomNumbers(numbers, 20);
             var searchWord = Math.floor(Math.random() * 21);
@@ -18,20 +19,33 @@
             show(numbers);
         }
         function binarySearch(array, word) {
-            var half = Math.floor(array.length / 2) + 1;
-            for (var i = 0; i < half; i++) {
+            var half = Math.floor(array.length / 2);
+            var cache = 0;
+            console.log("今:", half, "配列", array[half])
+            for (var i = 0; i < array.length; i++) {
                 if (array[half] < word) {
-                    half = half + Math.floor(half / 4);
-                    console.log("もっと大きい");
+                    console.log("もっと大きい　今:", half, "配列", array[half]);
+                    half = half + Math.floor(array.length - half / 2);
                 }
                 else if (array[half] > word) {
-                    half = half - Math.floor(half / 4);
-                    console.log("もっと小さい");
+                    console.log("もっと小さい　今:", half, "配列", array[half]);
+                    half = half - Math.floor(array.length - half / 2);
                 }
                 if (array[half] === word) {
                     show("finish! 答え:" + word + ", 配列の値" + array[half]);
+                    console.log("おわおわり", half);
+                    show(i);
                     break;
                 }
+                if (cache === half) {
+                    console.log("ない", half);
+                    break;
+                }
+                if (i === array.length - 1) {
+                    console.log("無理ーーー", half);
+                    break;
+                }
+                cache = half;
             }
         }
     </script>
