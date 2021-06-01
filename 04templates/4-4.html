@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        function runButtonPressed() {
+            var numbers = [];
+            createOrderedRandomNumbers(numbers, 20);
+            var searchWord = Math.floor(Math.random() * 21);
+            binarySearch(numbers, searchWord);
+            show(searchWord);
+            show(numbers);
+        }
+        function binarySearch(array, word) {
+            var half = Math.floor(array.length / 2) + 1;
+            for (var i = 0; i < half; i++) {
+                if (array[half] < word) {
+                    half = half + Math.floor(half / 4);
+                    console.log("もっと大きい");
+                }
+                else if (array[half] > word) {
+                    half = half - Math.floor(half / 4);
+                    console.log("もっと小さい");
+                }
+                if (array[half] === word) {
+                    show("finish! 答え:" + word + ", 配列の値" + array[half]);
+                    break;
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>4-4</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="res"></p>
+</body>
+
+</html>
