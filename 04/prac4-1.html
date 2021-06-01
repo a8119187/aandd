@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        function runButtonPressed() {
+            //prac4-1
+            var numbers = [];
+            createRandomNumbers(numbers, 10);
+            var numbersAdd2 = newAdd2Array(numbers);
+            show(numbers);
+            show(numbersAdd2);
+        }
+        function newAdd2Array(array) {
+            var add2Array = [];
+            for (var i = 0; i < array.length; i++) {
+                add2Array.push(array[i] + 2);
+            }
+            return add2Array;
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>prac4-1</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="res"></p>
+</body>
+
+</html>
