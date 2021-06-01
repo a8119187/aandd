@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        function runButtonPressed() {
+            var numbers = [];
+            createOrderedRandomNumbers(numbers, 20);
+            var searchWord = Math.floor(Math.random() * 21);
+            linerSearch(numbers, searchWord);
+            show(numbers);
+        }
+        function linerSearch(array, word) {
+            for (var i = 0; i < array.length; i++) {
+                if (array[i] === word) {
+                    show(`${word}のインデックスは${i}です`);
+                    break;
+                }
+                if (i === array.length - 1) {
+                    show(`${word}は存在しません`);
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>4-3</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="res"></p>
+</body>
+
+</html>
