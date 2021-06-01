@@ -28,6 +28,6 @@ function createSequentialNumbers(array, n) {
  */
 function createRandomNumbers(array, n) {
     for (var i = 1; i < n + 1; i++) {
-        array.push(Math.floor(Math.random() * 100));
+        array.push(Math.floor(Math.random() * 11));
     }
 }
