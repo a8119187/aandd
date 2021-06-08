@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        function runButtonPressed() {
+            var numbers = [];
+            createRandomNumbers(numbers, 10);
+            insertSort(numbers);
+            show(numbers);
+        }
+        function insertSort(array) {
+            var c1;
+            var mark;
+            for (var i = 0; i < array.length; i++) {
+                mark = i + 1
+                show(array);
+                for (var j = 0; j < mark; j++) {
+                    c1 = array[j];
+                    console.log(array[j], array[mark], c1, array[mark] <= c1);
+                    if (array[mark] <= c1) {
+                        array[j] = array[mark];
+                        array[mark] = c1;
+                    }
+                }
+                console.log(11111111111111111);
+            }
+            return array;
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>5-3</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="res"></p>
+</body>
+
+</html>
