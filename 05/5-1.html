@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../aandd.js"></script>
+    <script type="text/javascript" src="../jquery.min.js"></script>
+
+    <script>
+        function runButtonPressed() {
+            var numbers = [];
+            createOrderedRandomNumbers(numbers, 20);
+            var searchWord = Math.floor(Math.random() * 21);
+            babbleSearch(numbers, searchWord);
+            show(numbers);
+        }
+        function babbleSearch(array, word) {
+            
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1>5-1</h1>
+    <button onclick="runButtonPressed()">run!</button>
+    <p id="res"></p>
+</body>
+
+</html>
