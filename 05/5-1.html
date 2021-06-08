@@ -13,11 +13,21 @@
             var numbers = [];
             createOrderedRandomNumbers(numbers, 20);
             var searchWord = Math.floor(Math.random() * 21);
-            babbleSearch(numbers, searchWord);
+            babbleSort(numbers);
             show(numbers);
         }
-        function babbleSearch(array, word) {
-            
+        function babbleSort(array) {
+            var c1;
+            var c2;
+            for (var i = 0; i < array.length; i++) {
+                c1 = array[i];
+                c2 = array[i + 1];
+                if (c1 >= c2) {
+                    array[i] = c2;
+                    array[i + 1] = c1;
+                }
+            }
+            return array;
         }
     </script>
 
