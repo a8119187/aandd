@@ -11,20 +11,24 @@
     <script>
         function runButtonPressed() {
             var numbers = [];
-            createOrderedRandomNumbers(numbers, 20);
-            var searchWord = Math.floor(Math.random() * 21);
+            createRandomNumbers(numbers, 20);
+            show(numbers);
             babbleSort(numbers);
             show(numbers);
         }
         function babbleSort(array) {
             var c1;
             var c2;
-            for (var i = 0; i < array.length; i++) {
-                c1 = array[i];
-                c2 = array[i + 1];
-                if (c1 >= c2) {
-                    array[i] = c2;
-                    array[i + 1] = c1;
+            for (var j = 0; j < array.length; j++) {
+                for (var i = 0; i < array.length - 1; i++) {
+                    show(array);
+                    c1 = array[i];
+                    c2 = array[i + 1];
+                    console.log(c1, c2);
+                    if (c1 > c2) {
+                        array[i] = c2;
+                        array[i + 1] = c1;
+                    }
                 }
             }
             return array;
