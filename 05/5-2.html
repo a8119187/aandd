@@ -11,20 +11,27 @@
     <script>
         function runButtonPressed() {
             var numbers = [];
-            createOrderedRandomNumbers(numbers, 20);
+            createRandomNumbers(numbers, 10);
             choiceSort(numbers);
             show(numbers);
         }
         function choiceSort(array) {
             var c1;
-            for (var i = 0; i < array.length; i++) {
+            var minIndex;
+            for (var i = 0; i < 10; i++) {
                 c1 = array[i];
-                for (var j = i + 1; j < array.length; j++) {
-                    if (c1 >= array[j]) {
-                        array[i] = array[j];
-                        array[j] = c1;
+                minIndex = i;
+                show(array);
+                for (var j = i + 1; j < 10; j++) {
+                    console.log(array[minIndex], array[j], array[minIndex] > array[j])
+                    if (array[minIndex] > array[j]) {
+                        minIndex = j;
                     }
                 }
+                console.log(11111111, array[i], array[minIndex], c1)
+                array[i] = array[minIndex];
+                array[minIndex] = c1;
+                if(i == 99){console.log(76730812605760912769)}
             }
             return array;
         }
