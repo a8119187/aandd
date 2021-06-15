@@ -1,43 +1,38 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <script type="text/javascript" src="../aandd.js"></script>
-    <script type="text/javascript" src="../jquery.min.js"></script>
+        <script type="text/javascript" src="../aandd.js"></script>
+        <script type="text/javascript" src="../jquery.min.js"></script>
 
-    <script>
-      function runButtonPressed() {
-        var text = document.getElementById("tf1").value;
-        // show(text);
-        // var chars = text.split("");
-        // show(chars);
-        reverseText(text);
-        // var text2 = chars.join("");
-        // show(text2);
-      }
-      function reverseText(text) {
-        var chars = text.split(""); // テキスト一文字ずつ配列に
-        var stack = [];
-        show(chars);
-        // 後ろから一文字ずつstackにpush
-        var chars_len = chars.length;
-        for (var i = 0; i < chars_len; i++) {
-          stack.push(chars.pop());
-        }
-        show(stack);
-        // stackを文字列に
-        var text2 = stack.join("");
-        show(text2);
-      }
-    </script>
-  </head>
+        <script>
+            function runButtonPressed() {
+                var text = document.getElementById("tf1").value;
+                reverseText(text);
+            }
+            function reverseText(text) {
+                var chars = text.split(""); // テキスト一文字ずつ配列に
+                var stack = [];
+                show(chars);
+                // 後ろから一文字ずつstackにpush
+                var chars_len = chars.length;
+                for (var i = 0; i < chars_len; i++) {
+                    stack.push(chars.pop());
+                }
+                show(stack);
+                // stackを文字列に
+                var text2 = stack.join("");
+                show(text2);
+            }
+        </script>
+    </head>
 
-  <body>
-    <h1>反転さん</h1>
-    <input id="tf1" type="text" value="こんにちは" />
-    <button onclick="runButtonPressed()">run!</button>
-    <p id="res"></p>
-  </body>
+    <body>
+        <h1>反転さん</h1>
+        <input id="tf1" type="text" value="こんにちは" />
+        <button onclick="runButtonPressed()">run!</button>
+        <p id="res"></p>
+    </body>
 </html>
