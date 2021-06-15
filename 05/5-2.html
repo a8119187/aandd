@@ -19,8 +19,9 @@
             var c1;
             var minIndex;
             for (var i = 0; i < 10; i++) {
-                c1 = array[i];
-                minIndex = i;
+                // 最小値を探す
+                c1 = array[i]; // スワップする要素
+                minIndex = i; // 最小値のインデックス
                 show(array);
                 for (var j = i + 1; j < 10; j++) {
                     console.log(array[minIndex], array[j], array[minIndex] > array[j])
