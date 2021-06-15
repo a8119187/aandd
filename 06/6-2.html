@@ -1,38 +1,48 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <script type="text/javascript" src="../aandd.js"></script>
-    <script type="text/javascript" src="../jquery.min.js"></script>
+        <script type="text/javascript" src="../aandd.js"></script>
+        <script type="text/javascript" src="../jquery.min.js"></script>
 
-    <script type="text/javascript" src="nouns.js"></script>
-    <script type="text/javascript" src="verbs.js"></script>
+        <script type="text/javascript" src="nouns.js"></script>
+        <script type="text/javascript" src="verbs.js"></script>
 
-    <script>
-      var nouns;
+        <script>
+            var nouns;
 
-      $(document).ready(function () {
-        nouns = nounstext.split("\n");
-      });
+            $(document).ready(function () {
+                nouns = nounstext.split("\n");
+            });
 
-      function runButtonPressed() {
-        var noun = selectone(nouns);
-        show(noun);
-      }
+            function runButtonPressed() {
+                for (var i = 0; i < nouns.length; i++) {
+                    show(palindromeCheck(nouns[i]));
+                }
+            }
 
-      function selectone(array) {
-        var size = array.length;
-        var index = Math.floor(Math.random() * size);
-        return array[index];
-      }
-    </script>
-  </head>
+            // 回文判定
+            function palindromeCheck(text) {
+                var chars = text.split(""); // テキスト一文字ずつ配列に
+                var stack = [];
+                // 後ろから一文字ずつstackにpush
+                var chars_len = chars.length;
+                for (var i = 0; i < chars_len; i++) {
+                    stack.push(chars.pop());
+                }
+                // stackを文字列に
+                var palindrome = stack.join("");
+                show(palindrome);
+                return text === palindrome;
+            }
+        </script>
+    </head>
 
-  <body>
-    <h1>回文判定さん</h1>
-    <button onclick="runButtonPressed()">run!</button>
-    <p id="res"></p>
-  </body>
+    <body>
+        <h1>回文判定さん</h1>
+        <button onclick="runButtonPressed()">run!</button>
+        <p id="res"></p>
+    </body>
 </html>
