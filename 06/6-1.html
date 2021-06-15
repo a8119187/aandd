@@ -10,10 +10,25 @@
     <script>
       function runButtonPressed() {
         var text = document.getElementById("tf1").value;
-        show(text);
-        var chars = text.split("");
+        // show(text);
+        // var chars = text.split("");
+        // show(chars);
+        reverseText(text);
+        // var text2 = chars.join("");
+        // show(text2);
+      }
+      function reverseText(text) {
+        var chars = text.split(""); // テキスト一文字ずつ配列に
+        var stack = [];
         show(chars);
-        var text2 = chars.join("");
+        // 後ろから一文字ずつstackにpush
+        var chars_len = chars.length;
+        for (var i = 0; i < chars_len; i++) {
+          stack.push(chars.pop());
+        }
+        show(stack);
+        // stackを文字列に
+        var text2 = stack.join("");
         show(text2);
       }
     </script>
