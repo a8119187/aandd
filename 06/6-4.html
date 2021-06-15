@@ -19,7 +19,14 @@
             });
 
             function runButtonPressed() {
-                show(composition());
+                for (var i = 0; i < 100000; i++) {
+                    var sentence = composition();
+                    var check = palindromeCheck(sentence);
+                    if (check == true) {
+                        show(sentence);
+                    }
+                }
+                console.log("終了");
             }
 
             // 作文さん
@@ -27,7 +34,21 @@
                 var noun1 = selectOne(nouns);
                 var noun2 = selectOne(nouns);
                 var verb1 = selectOne(verbs);
-                return `${noun1}は、${noun2}を${verb1}`;
+                return `${noun1}${verb1}`;
+            }
+
+            // 回文判定
+            function palindromeCheck(text) {
+                var chars = text.split(""); // テキスト一文字ずつ配列に
+                var stack = [];
+                // 後ろから一文字ずつstackにpush
+                var chars_len = chars.length;
+                for (var i = 0; i < chars_len; i++) {
+                    stack.push(chars.pop());
+                }
+                // stackを文字列に
+                var palindrome = stack.join("");
+                return text === palindrome;
             }
 
             function selectOne(array) {
@@ -39,7 +60,7 @@
     </head>
 
     <body>
-        <h1>作文さん</h1>
+        <h1>作文回文さん</h1>
         <button onclick="runButtonPressed()">run!</button>
         <p id="res"></p>
     </body>
