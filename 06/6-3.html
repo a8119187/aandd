@@ -15,14 +15,22 @@
 
             $(document).ready(function () {
                 nouns = nounstext.split("\n");
+                verbs = verbstext.split("\n");
             });
 
             function runButtonPressed() {
-                var noun = selectone(nouns);
-                show(noun);
+                show(composition());
             }
 
-            function selectone(array) {
+            // 作文さん
+            function composition() {
+                var noun1 = selectOne(nouns);
+                var noun2 = selectOne(nouns);
+                var verb1 = selectOne(verbs);
+                return `${noun1}は、${noun2}を${verb1}`;
+            }
+
+            function selectOne(array) {
                 var size = array.length;
                 var index = Math.floor(Math.random() * size);
                 return array[index];
