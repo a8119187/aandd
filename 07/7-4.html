@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <script type="text/javascript" src="../aandd.js"></script>
+        <script type="text/javascript" src="../jquery.min.js"></script>
+
+        <script>
+            var messages = {};
+
+            $().ready(function () {
+                messages["こんにちは"] = "こんにちは！";
+                messages["ありがとう"] = "どういたしまして";
+            });
+
+            // 連想配列にkey英語とvalue日本語を追加
+            function registerButtonPressed() {
+                var question = document.getElementById("user_question").value;
+                var response = document.getElementById("set_response").value;
+                messages[question] = response;
+                console.log(messages);
+            }
+
+            function runButtonPressed() {
+                var question = document.getElementById("user_question").value;
+                var response = messages[question];
+                if (response === undefined)
+                    response = `${question}に対応する応答を学習していません。`;
+                document.getElementById("bot_response").value = response;
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1>7-4</h1>
+        <h1>登録</h1>
+        <br />
+        あなた：<input id="user_question" type="text" value="" size="50" />
+        <button onclick="runButtonPressed()">発信</button>
+        <br />
+        コンピュータ：<input id="bot_response" type="text" value="" size="50" />
+        <br />
+        応答：<input id="set_response" type="text" value="" size="50" />
+        <button onclick="registerButtonPressed()">教える</button>
+        <p id="res"></p>
+    </body>
+</html>
