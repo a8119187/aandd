@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <script type="text/javascript" src="../aandd.js"></script>
+        <script type="text/javascript" src="../jquery.min.js"></script>
+
+        <script>
+            var fruits = {};
+
+            $().ready(function () {
+                fruits["apple"] = "りんご";
+                fruits["orange"] = "みかん";
+            });
+
+            // 連想配列にkey英語とvalue日本語を追加
+            function registerButtonPressed(button) {
+                if (button === 0) {
+                    var english = document.getElementById("tf3").value;
+                    var japanese = document.getElementById("tf4").value;
+                } else if (button === 1) {
+                    var japanese = document.getElementById("tf5").value;
+                    var english = document.getElementById("tf6").value;
+                }
+                fruits[japanese] = english;
+                console.log(fruits);
+            }
+
+            function runButtonPressed() {
+                var english = document.getElementById("tf1").value;
+                var japanese = fruits[english];
+                document.getElementById("tf2").value = japanese;
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1>7-2</h1>
+        <h1>登録</h1>
+        英語：<input id="tf3" type="text" value="" />
+        <br />
+        日本語：<input id="tf4" type="text" value="" />
+        <button onclick="registerButtonPressed(0)">登録!</button>
+        <br />
+        <br />
+        日本語：<input id="tf5" type="text" value="" />
+        <br />
+        英語：<input id="tf6" type="text" value="" />
+        <button onclick="registerButtonPressed(1)">登録!</button>
+        <h1>検索</h1>
+        英語：<input id="tf1" type="text" value="" />
+        <br />
+        日本語：<input id="tf2" type="text" value="" />
+        <button onclick="runButtonPressed()">検索!</button>
+        <p id="res"></p>
+    </body>
+</html>
