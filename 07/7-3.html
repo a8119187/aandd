@@ -8,30 +8,26 @@
         <script type="text/javascript" src="../jquery.min.js"></script>
 
         <script>
-            var fruits = {};
+            var birthdays = {};
 
             $().ready(function () {
-                fruits["apple"] = "りんご";
-                fruits["orange"] = "みかん";
+                birthdays["れお"] = "09/22";
+                birthdays["みお"] = "11/05";
             });
 
             // 連想配列にkey英語とvalue日本語を追加
-            function registerButtonPressed(button) {
-                if (button === 0) {
-                    var english = document.getElementById("tf3").value;
-                    var japanese = document.getElementById("tf4").value;
-                } else if (button === 1) {
-                    var japanese = document.getElementById("tf5").value;
-                    var english = document.getElementById("tf6").value;
-                }
-                fruits[japanese] = english;
-                console.log(fruits);
+            function registerButtonPressed() {
+                var name = document.getElementById("tf3").value;
+                var birthday = document.getElementById("tf4").value;
+                birthdays[name] = birthday;
+                console.log(birthdays);
             }
 
             function runButtonPressed() {
-                var english = document.getElementById("tf1").value;
-                var japanese = fruits[english];
-                document.getElementById("tf2").value = japanese;
+                var name = document.getElementById("tf1").value;
+                var birthday = birthdays[name];
+                if (birthday === undefined) birthday = "見つかりませんでした。";
+                document.getElementById("tf2").value = birthday;
             }
         </script>
     </head>
@@ -39,20 +35,13 @@
     <body>
         <h1>7-3</h1>
         <h1>登録</h1>
-        英語：<input id="tf3" type="text" value="" />
+        名前：<input id="tf3" type="text" value="" />
         <br />
-        日本語：<input id="tf4" type="text" value="" />
-        <button onclick="registerButtonPressed(0)">登録!</button>
-        <br />
-        <br />
-        日本語：<input id="tf5" type="text" value="" />
-        <br />
-        英語：<input id="tf6" type="text" value="" />
-        <button onclick="registerButtonPressed(1)">登録!</button>
+        誕生日：<input id="tf4" type="text" value="" />
+        <button onclick="registerButtonPressed()">登録!</button>
         <h1>検索</h1>
-        key：<input id="tf1" type="text" value="" />
-        <br />
-        value：<input id="tf2" type="text" value="" />
+        <input id="tf1" type="text" value="" /> :
+        <input id="tf2" type="text" value="" />
         <button onclick="runButtonPressed()">検索!</button>
         <p id="res"></p>
     </body>
