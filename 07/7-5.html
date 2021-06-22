@@ -9,37 +9,33 @@
         <script type="text/javascript" src="../jquery.min.js"></script>
 
         <script>
-            var lexicon = {};
+            var lexicon = [];
 
             $().ready(function () {
                 nouns = nounstext.split("\n");
-                lexicon["シマイ"] = { japanese: "姉妹", mean: "女の兄弟" };
-                lexicon["アヤギヌ"] = { japanese: "綾絹", mean: "藻類の一種" };
+                lexicon.push({ name: "シマイ", mean: "女の兄弟" });
+                lexicon.push({ name: "アヤギヌ", mean: "藻類の一種" });
                 console.log(lexicon);
             });
 
-            // 連想配列にkey英語とvalue日本語を追加
+            // 連想配列にkey単語名とvalue意味を追加
             function registerButtonPressed() {
                 var noun = document.getElementById("register_noun").value;
-                var set_japanese =
-                    document.getElementById("set_japanese").value;
                 var set_mean = document.getElementById("set_mean").value;
-                lexicon[noun] = {};
+                lexicon.push({ name: noun, mean: set_mean });
                 console.log(lexicon);
-                lexicon[noun]["japanese"] = set_japanese;
-                lexicon[noun]["mean"] = set_mean;
-                console.log(lexicon);
-                viewLexicons();
+                viewLexicons(); // 表を更新
             }
 
+            // 表を作成する
             function viewLexicons() {
-                var table = "<table border=1>";
-                for (noun in lexicon) {
-                    console.log(noun["japanese"]);
+                var table =
+                    "<table border=1><tr><td>単語<td/><td>意味<td/><tr/>";
+                for (var i = 0; i < lexicon.length; i++) {
+                    console.log(lexicon[i]);
                     table += `<tr>`;
-                    table += `<td> ${noun} <td/>`;
-                    table += `<td> ${noun["japanese"]} <td/>`;
-                    table += `<td> ${noun["mean"]} <td/>`;
+                    table += `<td> ${lexicon[i]["name"]} <td/>`;
+                    table += `<td> ${lexicon[i]["mean"]} <td/>`;
                     table += `<tr/>`;
                 }
                 table += "<table/>";
@@ -60,13 +56,6 @@
         <br />
         単語：<input id="register_noun" type="text" value="" size="50" />
         <button onclick="changeButtonPressed()">変更</button>
-        <br />
-        漢字又はひらがな：<input
-            id="set_japanese"
-            type="text"
-            value=""
-            size="50"
-        />
         <br />
         意味：<input id="set_mean" type="text" value="" size="50" />
         <button onclick="registerButtonPressed()">教える</button>
