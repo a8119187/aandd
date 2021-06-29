@@ -22,14 +22,13 @@
                     "\t"
                 );
             }
-            // jsonみたいな[{},{},...{}]を引数にとり、nameを配列に入れる
+            // jsonみたいな[{},{},...{}]を引数にとる。
             function getStudentsDataAndPushArray(obj) {
                 var array = [];
                 for (var i = 0; i < obj.length; i++) {
                     var birthday = obj[i].birthday;
                     var d = new Date(birthday);
                     array.push({});
-                    // array[i].name = obj[i].name;
                     var obj_name = obj[i].name;
                     array[i][obj_name] = `${d.getFullYear()}年${
                         d.getMonth() + 1

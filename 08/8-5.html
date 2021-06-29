@@ -30,7 +30,7 @@
                     var birthday = obj[i].birthday;
                     var d = new Date(birthday);
                     var objMonth = d.getMonth() + 1;
-
+                    // 厳密比較だと通らない
                     if (objMonth == month) {
                         array.push(obj[i]);
                     }
