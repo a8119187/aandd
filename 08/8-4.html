@@ -15,22 +15,23 @@
                 var objects = await osql.connect("select * from Students;");
                 var birthday = objects[0].birthday;
                 var d = new Date(birthday);
-                arrayB1 = getStudentsDataAndPushArray(objects);
-                document.getElementById("res").innerHTML = JSON.stringify(
-                    arrayB1,
-                    null,
-                    "\t"
-                );
+                average_male = getAverageOfMaleHeight(objects);
+                show(average_male);
             }
             // jsonみたいな[{},{},...{}]を引数にとる。
-            function getStudentsDataAndPushArray(obj) {
-                var array = [];
+            function getAverageOfMaleHeight(obj) {
+                sum = 0;
+                total = 0;
                 for (var i = 0; i < obj.length; i++) {
                     var height = obj[i].height;
-                    array.push(height);
+                    var gender = obj[i].gender;
+                    if (gender === "m") {
+                        sum += Number(height);
+                        total++;
+                    }
                 }
-                console.log(array);
-                return array;
+                console.log("sum", sum, "total", total);
+                return sum / total;
             }
         </script>
     </head>
