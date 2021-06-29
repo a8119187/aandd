@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <script type="text/javascript" src="../jquery.min.js"></script>
+        <script type="text/javascript" src="../aandd.js"></script>
+        <script type="text/javascript" src="../osql.js"></script>
+
+        <script>
+            osql.requireLogin();
+
+            async function runButtonPressed() {
+                var objects = await osql.connect("select * from Students;");
+                var birthday = objects[0].birthday;
+                var d = new Date(birthday);
+                bornInJune = getBirthMonth(objects, "06");
+
+                document.getElementById("res").innerHTML = JSON.stringify(
+                    bornInJune,
+                    null,
+                    "\t"
+                );
+            }
+            // jsonみたいな[{},{},...{}]を引数にとる。monthと同じ誕生月の人を配列に抽出
+            function getBirthMonth(obj, month) {
+                var array = [];
+                for (var i = 0; i < obj.length; i++) {
+                    var birthday = obj[i].birthday;
+                    var d = new Date(birthday);
+                    var objMonth = d.getMonth() + 1;
+
+                    if (objMonth == month) {
+                        array.push(obj[i]);
+                    }
+                }
+                return array;
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1>8-5</h1>
+        <button onclick="runButtonPressed()">run!</button>
+        <pre id="res"></pre>
+    </body>
+</html>
