@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <script type="text/javascript" src="../jquery.min.js"></script>
+        <script type="text/javascript" src="../aandd.js"></script>
+        <script type="text/javascript" src="../osql.js"></script>
+
+        <script>
+            osql.requireLogin();
+
+            async function runButtonPressed() {
+                var objects = await osql.connect("select * from Students;");
+                var birthday = objects[0].birthday;
+                var d = new Date(birthday);
+                bornInJune = get_object_birthday_name(objects);
+
+                document.getElementById("res").innerHTML = JSON.stringify(
+                    bornInJune,
+                    null,
+                    "\t"
+                );
+            }
+            // jsonみたいな[{},{},...{}]を引数にとる。
+            function get_object_birthday_name(obj, month) {
+                var resObj = {};
+                for (var i = 0; i < obj.length; i++) {
+                    // 誕生日のフォーマット
+                    var birthday = obj[i].birthday;
+                    var d = new Date(birthday);
+                    var f_birthday = `${d.getFullYear()}年${
+                        d.getMonth() + 1
+                    }月${d.getDate()}日`;
+
+                    // オブジェクトの生成
+                    if (resObj[f_birthday] === undefined) {
+                        resObj[f_birthday] = [];
+                    }
+                    resObj[f_birthday].push(obj[i].name);
+                }
+                return resObj;
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1>8-6</h1>
+        <button onclick="runButtonPressed()">run!</button>
+        <pre id="res"></pre>
+    </body>
+</html>
