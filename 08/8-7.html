@@ -15,10 +15,10 @@
                 var objects = await osql.connect("select * from Students;");
                 var birthday = objects[0].birthday;
                 var d = new Date(birthday);
-                bornInJune = get_object_birthday_name2(objects);
+                birthdayList = get_object_birthday_name2(objects);
 
                 document.getElementById("res").innerHTML = JSON.stringify(
-                    bornInJune,
+                    birthdayList,
                     null,
                     "\t"
                 );
