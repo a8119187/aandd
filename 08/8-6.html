@@ -30,9 +30,7 @@
                     // 誕生日のフォーマット
                     var birthday = obj[i].birthday;
                     var d = new Date(birthday);
-                    var f_birthday = `${d.getFullYear()}年${
-                        d.getMonth() + 1
-                    }月${d.getDate()}日`;
+                    var f_birthday = `${d.getMonth() + 1}月${d.getDate()}日`;
 
                     // オブジェクトの生成
                     if (resObj[f_birthday] === undefined) {
